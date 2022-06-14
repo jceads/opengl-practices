@@ -51,7 +51,6 @@ int main(void)
 {
     GLFWwindow* window;
 
-    glewExperimental = GL_TRUE;
     /* Initialize the library */
     if (!glfwInit())
         return -1;
@@ -69,9 +68,10 @@ int main(void)
 
     /* Make the window's context current */
     glfwMakeContextCurrent(window);
+    glewExperimental = GL_TRUE;
 
 
-    if (glewInit != GLEW_OK) {
+    if (glewInit() != GLEW_OK) {
         std::cout << "bune mk";
         std::cout << "Error!" << std::endl;
     }
@@ -86,7 +86,7 @@ int main(void)
     float positions[6] = {
         -0.5f, -0.5f,
          0.0f,  0.5f,
-         0.5f, -0.5f 
+         0.5f, -0.5f
     };
 
     //vertex buffer, kaç buffer lazým
